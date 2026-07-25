@@ -218,7 +218,7 @@ const translations = {
     "gallery.img6": "Batch Group Photo",
     "gallery.img7": "Leadership Team",
     "gallery.img8": "Academy Office",
-    "gallery.img9": "Academy Office",
+    "gallery.img9": "Running Track",
 
     // Testimonials
     "testimonials.badge": "Testimonials",
@@ -528,7 +528,7 @@ const translations = {
     "gallery.img6": "बैच समूह चित्र",
     "gallery.img7": "लीडरशिप टीम",
     "gallery.img8": "अकादमी कार्यालय",
-    "gallery.img9": "अकादमी कार्यालय",
+    "gallery.img9": "दौड़ने का ट्रैक",
 
     // Testimonials
     "testimonials.badge": "प्रशंसापत्र",

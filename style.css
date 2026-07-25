@@ -470,16 +470,19 @@ button, input, textarea, select {
   left: 0;
   width: 100%;
   z-index: 10000;
-  padding: 18px 0;
-  transition: all var(--duration) var(--ease);
+  padding: 14px 0;
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled {
-  background: rgba(10,22,40,0.95);
-  backdrop-filter: blur(24px) saturate(1.5);
-  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  background: rgba(10, 22, 40, 0.98);
   padding: 10px 0;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 .navbar .container {
@@ -493,6 +496,7 @@ button, input, textarea, select {
   align-items: center;
   gap: 12px;
   z-index: 1001;
+  text-decoration: none;
 }
 
 .nav-logo img {
@@ -540,11 +544,12 @@ button, input, textarea, select {
   font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.85);
   padding: 8px 14px;
   border-radius: var(--radius-sm);
   transition: all var(--duration) var(--ease);
   position: relative;
+  text-decoration: none;
 }
 
 .nav-links a::after {
@@ -580,93 +585,6 @@ button, input, textarea, select {
   padding: 10px 24px;
   font-size: 13px;
 }
-
-/* Mobile Menu Toggle */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-  z-index: 1001;
-  padding: 8px;
-}
-
-.nav-toggle span {
-  width: 28px;
-  height: 2px;
-  background: var(--white);
-  border-radius: 2px;
-  transition: all var(--duration) var(--ease);
-}
-
-.nav-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translateY(11px);
-}
-
-.nav-toggle.active span:nth-child(2) {
-  opacity: 0;
-  transform: translateX(-10px);
-}
-
-.nav-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-11px);
-}
-
-/* Mobile Navigation Overlay */
-.nav-mobile {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(10,22,40,0.98);
-  backdrop-filter: blur(24px);
-  z-index: 1000;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.5s var(--ease);
-}
-
-.nav-mobile.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.nav-mobile a {
-  font-family: var(--font-heading);
-  font-size: 22px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.8);
-  padding: 12px 28px;
-  border-radius: var(--radius-sm);
-  transition: all var(--duration) var(--ease);
-  transform: translateY(20px);
-  opacity: 0;
-}
-
-.nav-mobile.active a {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.nav-mobile a:hover {
-  color: var(--gold);
-  background: rgba(255,255,255,0.05);
-}
-
-/* Stagger animation for mobile links */
-.nav-mobile a:nth-child(1)  { transition-delay: 0.05s; }
-.nav-mobile a:nth-child(2)  { transition-delay: 0.1s;  }
-.nav-mobile a:nth-child(3)  { transition-delay: 0.15s; }
-.nav-mobile a:nth-child(4)  { transition-delay: 0.2s;  }
-.nav-mobile a:nth-child(5)  { transition-delay: 0.25s; }
-.nav-mobile a:nth-child(6)  { transition-delay: 0.3s;  }
-.nav-mobile a:nth-child(7)  { transition-delay: 0.35s; }
-.nav-mobile a:nth-child(8)  { transition-delay: 0.4s;  }
-.nav-mobile a:nth-child(9)  { transition-delay: 0.45s; }
-.nav-mobile a:nth-child(10) { transition-delay: 0.5s;  }
 
 /* ============================================================
    HERO SECTION — World-Class Cinematic Design

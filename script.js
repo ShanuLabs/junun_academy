@@ -160,40 +160,64 @@
      ────────────────────────────────────────────── */
   const navToggle = document.getElementById('nav-toggle');
   const navMobile = document.getElementById('nav-mobile');
+  const navOverlay = document.getElementById('nav-overlay');
+  const navMobileClose = document.getElementById('nav-mobile-close');
 
-  if (navToggle && navMobile) {
-    navToggle.addEventListener('click', function () {
-      navToggle.classList.toggle('active');
-      navMobile.classList.toggle('active');
-      document.body.style.overflow = navMobile.classList.contains('active') ? 'hidden' : '';
-    });
+  function openMobileMenu() {
+    if (navToggle) navToggle.classList.add('active');
+    if (navMobile) navMobile.classList.add('active');
+    if (navOverlay) navOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
+  }
 
-    // Close mobile menu on link click
-    navMobile.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        navToggle.classList.remove('active');
-        navMobile.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    });
+  function closeMobileMenu() {
+    if (navToggle) navToggle.classList.remove('active');
+    if (navMobile) navMobile.classList.remove('active');
+    if (navOverlay) navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+  }
 
-    // Close mobile menu on Escape key
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && navMobile.classList.contains('active')) {
-        navToggle.classList.remove('active');
-        navMobile.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
+  function toggleMobileMenu() {
+    if (navMobile && navMobile.classList.contains('active')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
 
-    // Keyboard activation
+  if (navToggle) {
+    navToggle.addEventListener('click', toggleMobileMenu);
     navToggle.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        navToggle.click();
+        toggleMobileMenu();
       }
     });
   }
+
+  if (navMobileClose) {
+    navMobileClose.addEventListener('click', closeMobileMenu);
+  }
+
+  if (navOverlay) {
+    navOverlay.addEventListener('click', closeMobileMenu);
+  }
+
+  if (navMobile) {
+    // Close mobile menu on link click
+    navMobile.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMobileMenu);
+    });
+  }
+
+  // Close mobile menu on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && navMobile && navMobile.classList.contains('active')) {
+      closeMobileMenu();
+    }
+  });
 
   /* ──────────────────────────────────────────────
      5. SMOOTH SCROLL for Anchor Links
